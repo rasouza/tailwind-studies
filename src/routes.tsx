@@ -1,4 +1,7 @@
 import { FaCog, FaHome } from "react-icons/fa";
+import { GiHypersonicBolt } from "react-icons/gi";
+
+import { Heroes } from "./features/Heroes";
 import { Home } from "./features/Home";
 
 interface Route {
@@ -15,6 +18,12 @@ const routes: Route[] = [
     icon: <FaHome />,
     component: Home,
     url: "/home",
+  },
+  {
+    name: "Heroes",
+    icon: <GiHypersonicBolt />,
+    component: Heroes,
+    url: "/heroes",
   },
   {
     name: "Settings",

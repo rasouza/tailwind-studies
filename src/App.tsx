@@ -9,8 +9,8 @@ import routes from "src/routes";
 const queryClient = new QueryClient();
 
 const renderRoutes = () =>
-  routes.map((route) => (
-    <Route exact path={route.url} component={route.component} />
+  routes.map((route, key) => (
+    <Route exact path={route.url} component={route.component} key={key} />
   ));
 
 function App() {

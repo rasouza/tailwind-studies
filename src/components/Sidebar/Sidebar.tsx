@@ -1,16 +1,18 @@
-import { NavItem } from "./NavItem";
-import { Navigation } from "./Navigation";
-
-import routes from "src/routes";
 import { Redirect } from "react-router-dom";
 
+import routes from "src/routes";
+
+import { Navigation } from "./Navigation";
+import { NavItem } from "./NavItem";
+
 const createLinks = () =>
-  routes.map((route: any) => (
+  routes.map((route, key) => (
     <NavItem
       name={route.name}
       url={route.url}
       icon={route.icon}
       badge={route.badge}
+      key={key}
     />
   ));
 
