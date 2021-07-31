@@ -4,9 +4,14 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import "./App.css";
 import { Sidebar } from "src/components/Sidebar";
-import { Home } from "src/features/Home";
+import routes from "src/routes";
 
 const queryClient = new QueryClient();
+
+const renderRoutes = () =>
+  routes.map((route) => (
+    <Route exact path={route.url} component={route.component} />
+  ));
 
 function App() {
   return (
@@ -14,14 +19,7 @@ function App() {
       <div className="flex min-h-screen bg-black">
         <BrowserRouter>
           <Sidebar />
-          <Switch>
-            <Route path="/">
-              <Home />
-            </Route>
-            <Route path="/settings">
-              <Home />
-            </Route>
-          </Switch>
+          <Switch>{renderRoutes()}</Switch>
         </BrowserRouter>
       </div>
       <ReactQueryDevtools initialIsOpen={false} />

@@ -1,7 +1,3 @@
 export function Home() {
-  return (
-    <main>
-      <p>test</p>
-    </main>
-  );
+  return <main className="shadow-2xl"></main>;
 }

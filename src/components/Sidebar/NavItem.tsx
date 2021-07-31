@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 type NavItemProps = {
   name: string;
@@ -10,7 +10,7 @@ type NavItemProps = {
 export function NavItem({ name, badge, icon, url }: NavItemProps) {
   return (
     <li className="my-1 relative bg-black rounded-lg shadow ">
-      <Link
+      <NavLink
         to={url}
         className="flex h-10 px-3 text-grey items-center hover:bg-teal rounded-lg"
       >
@@ -22,7 +22,7 @@ export function NavItem({ name, badge, icon, url }: NavItemProps) {
             <span className="absolute -top-1 -right-1 inline-flex rounded-full h-3 w-3 bg-teal shadow"></span>
           </span>
         )}
-      </Link>
+      </NavLink>
     </li>
   );
 }
