@@ -7,8 +7,8 @@ export function Sidebar() {
     <aside className="w-64 bg-black-light">
       <div className="py-6 px-4">
         <Navigation>
-          <NavItem name="Home" icon={<FaHome />} />
-          <NavItem name="Settings" badge icon={<FaCog />} />
+          <NavItem name="Home" icon={<FaHome />} url="/" />
+          <NavItem name="Settings" url="/settings" badge icon={<FaCog />} />
         </Navigation>
       </div>
     </aside>
