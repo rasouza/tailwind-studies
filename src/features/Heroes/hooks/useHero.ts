@@ -1,6 +1,7 @@
 import { useQuery } from "react-query";
 
 import { getHero } from "../api";
+import { Hero } from "../types";
 
 export const useHero = (heroId: number) =>
-  useQuery(["hero", heroId], () => getHero(heroId));
+  useQuery<Hero, Error>(["hero", heroId], () => getHero(heroId));

@@ -11,12 +11,8 @@ export function getHero(id: number): Promise<Hero> {
   return axios.get(`/${id}`);
 }
 
-export function getHeroesByPage({
-  pageParam = 1,
-  queryKey,
-}: any): Promise<Hero[]> {
-  const { size } = queryKey[1];
-  const ids = range(size * (pageParam - 1) + 1, size * pageParam + 1);
+export function getHeroesByPage(page = 1, size = PAGE_SIZE): Promise<Hero[]> {
+  const ids = range(size * (page - 1) + 1, size * page + 1);
   const requests = ids.map((id: number) => getHero(id));
   return Promise.all(requests);
 }

@@ -45,7 +45,7 @@ export function Heroes() {
       </div>
     );
   if (!data) return null;
-  if (isError) return <div>Error {(error as Error).message}</div>;
+  if (isError) return <div>Error {error?.message}</div>;
 
   return (
     <div>
