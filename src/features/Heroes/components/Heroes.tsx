@@ -1,9 +1,43 @@
+import { flatten } from "lodash/fp";
+import { useEffect, useRef } from "react";
+
 import { Card } from "src/components/Card";
 
-import { useHero } from "../hooks/useHero";
+import { useHeroes } from "../hooks/useHeroes";
 
 export function Heroes() {
-  const { isLoading, data, isError, error } = useHero(3);
+  const loadMoreButtonRef = useRef<HTMLButtonElement>(null);
+  const {
+    isLoading,
+    data,
+    isError,
+    error,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useHeroes(30);
+
+  useEffect(() => {
+    if (!hasNextPage) {
+      return;
+    }
+    const observer = new IntersectionObserver((entries) =>
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          fetchNextPage();
+        }
+      })
+    );
+    const el = loadMoreButtonRef && loadMoreButtonRef.current;
+    if (!el) {
+      return;
+    }
+    observer.observe(el);
+    return () => {
+      observer.unobserve(el);
+    };
+  }, [hasNextPage, fetchNextPage]);
+
   if (isLoading)
     return (
       <div className="w-full min-h-screen flex justify-center items-center">
@@ -12,13 +46,27 @@ export function Heroes() {
     );
   if (!data) return null;
   if (isError) return <div>Error {(error as Error).message}</div>;
+
   return (
     <div>
-      <Card
-        image={data.image.url}
-        title={data.name}
-        subtitle={data.biography.publisher}
-      />
+      <div className="flex flex-wrap justify-center">
+        {flatten(data.pages).map((hero, key) => (
+          <Card
+            image={hero.image.url}
+            title={hero.name}
+            subtitle={hero.biography.publisher}
+            key={key}
+          />
+        ))}
+      </div>
+      <button
+        className="p-2 rounded-xl bg-grey flex justify-center"
+        ref={loadMoreButtonRef}
+        onClick={() => fetchNextPage()}
+        disabled={!hasNextPage || isFetchingNextPage}
+      >
+        {isFetchingNextPage ? "Loading..." : "Load More"}
+      </button>
     </div>
   );
 }
