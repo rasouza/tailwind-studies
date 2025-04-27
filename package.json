@@ -6,15 +6,18 @@
     "build": "react-router build",
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
-    "typecheck": "react-router typegen && tsc"
+    "typecheck": "react-router typegen && tsc",
+    "lint": "biome check --fix"
   },
   "dependencies": {
+    "@heroui/react": "^2.7.6",
     "@react-router/fs-routes": "^7.5.2",
     "@react-router/node": "^7.5.2",
     "@react-router/serve": "^7.5.2",
+    "framer-motion": "^12.9.2",
     "isbot": "^5.1.17",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "react-router": "^7.5.2"
   },
   "devDependencies": {
