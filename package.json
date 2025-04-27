@@ -10,13 +10,14 @@
     "lint": "biome check --fix"
   },
   "dependencies": {
-    "@heroui/react": "^2.7.6",
-    "@heroui/use-theme": "^2.1.6",
+    "@heroui/react": "^2.8.0-beta.2",
+    "@heroui/use-theme": "^2.1.8-beta.2",
     "@react-router/fs-routes": "^7.5.2",
     "@react-router/node": "^7.5.2",
     "@react-router/serve": "^7.5.2",
     "framer-motion": "^12.9.2",
     "isbot": "^5.1.17",
+    "lucide-react": "^0.503.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router": "^7.5.2"
@@ -29,7 +30,7 @@
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.1",
     "react-router-devtools": "^1.1.0",
-    "tailwindcss": "^4.0.0",
+    "tailwindcss": "^4.1.4",
     "typescript": "^5.7.2",
     "vite": "^5.4.11",
     "vite-tsconfig-paths": "^5.1.4"
