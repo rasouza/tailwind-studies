@@ -10,10 +10,21 @@ import { Separator } from '@/components/ui/separator'
 import { usePageContext } from 'vike-react/usePageContext'
 import { SidebarTrigger } from './ui/sidebar'
 
+const configModules = import.meta.glob(
+  // adjust to match your file extensions/layout:
+  '../pages/**/+config.{js,ts,jsx,tsx}',
+  { eager: true },
+)
 export function Breadcrumbs() {
-  const { urlParsed, config } = usePageContext()
-  console.log('urlParsed :>> ', urlParsed)
-  console.log('config :>> ', config)
+  const pageContext = usePageContext()
+  const { urlParsed, config, globalContext } = pageContext
+  const segments = urlParsed.pathname.split('/').filter(Boolean)
+  // console.log('urlParsed :>> ', urlParsed)
+  // console.log('config :>> ', config)
+  // console.log('segments :>> ', segments)
+  // console.log('pageContext :>> ', pageContext)
+  // console.log('globalContext :>> ', globalContext)
+  // console.log('configModules :>> ', configModules)
   return (
     <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
       <div className="flex items-center gap-2 px-4">

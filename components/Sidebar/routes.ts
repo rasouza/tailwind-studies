@@ -1,4 +1,22 @@
-import { BookOpen, Bot, Settings2, SquareTerminal } from 'lucide-react'
+import {
+  BookOpen,
+  Bot,
+  type LucideIcon,
+  Settings2,
+  SquareTerminal,
+} from 'lucide-react'
+
+export interface NavigationItem {
+  group: string
+  title: string
+  url: string
+  icon?: LucideIcon
+  isActive?: boolean
+  items?: {
+    title: string
+    url: string
+  }[]
+}
 
 export default [
   {

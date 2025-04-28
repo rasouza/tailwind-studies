@@ -15,19 +15,7 @@ import {
   SidebarMenuSubButton,
 } from '../ui/sidebar'
 import { group } from 'radash'
-import routes from './routes'
-import { useEffect, useState } from 'react'
-interface NavigationItem {
-  group: string
-  title: string
-  url: string
-  icon?: LucideIcon
-  isActive?: boolean
-  items?: {
-    title: string
-    url: string
-  }[]
-}
+import type { NavigationItem } from './routes'
 
 export function Navigation({ items }: { items: NavigationItem[] }) {
   const sections = group(items, (item) => item.group)
@@ -40,9 +28,9 @@ export function Navigation({ items }: { items: NavigationItem[] }) {
           <SidebarMenu>
             {items?.map((item) =>
               item.items && item.items.length > 0 ? (
-                <NavigationItemWithSubmenu key={item.title} item={item} />
+                <ItemWithSubmenu key={item.title} item={item} />
               ) : (
-                <NavigationItemWithoutSubmenu key={item.title} item={item} />
+                <ItemWithoutSubmenu key={item.title} item={item} />
               ),
             )}
           </SidebarMenu>
@@ -52,7 +40,7 @@ export function Navigation({ items }: { items: NavigationItem[] }) {
   )
 }
 
-function NavigationItemWithSubmenu({
+function ItemWithSubmenu({
   item,
 }: {
   item: NavigationItem
@@ -89,7 +77,7 @@ function NavigationItemWithSubmenu({
   )
 }
 
-function NavigationItemWithoutSubmenu({
+function ItemWithoutSubmenu({
   item,
 }: {
   item: NavigationItem

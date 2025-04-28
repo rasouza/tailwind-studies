@@ -3,7 +3,6 @@
 import { AudioWaveform, Command, GalleryVerticalEnd } from 'lucide-react'
 import type * as React from 'react'
 
-import { NavMain } from '@/components/Sidebar/NavMain'
 import { NavUser } from '@/components/Sidebar/NavUser'
 import { TeamSwitcher } from '@/components/Sidebar/TeamSwitcher'
 import {
