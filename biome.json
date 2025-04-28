@@ -9,6 +9,15 @@
       "recommended": true
     }
   },
+  "formatter": {
+    "indentStyle": "space"
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "semicolons": "asNeeded"
+    }
+  },
   "files": {
     "ignore": ["dist/**", "*.js", "*.cjs", "*.mjs", "*.spec.ts"]
   }
