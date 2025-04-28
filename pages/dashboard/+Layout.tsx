@@ -3,22 +3,22 @@ import "../../assets/style.css";
 
 import "../../assets/tailwind.css";
 
-import { AppSidebar } from "@/components/app-sidebar";
+import { AppSidebar } from "@/components/Sidebar/Sidebar";
 
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 
 export default function LayoutDefault({
-  children,
+	children,
 }: {
-  children: React.ReactNode;
+	children: React.ReactNode;
 }) {
-  return (
-    <SidebarProvider>
-      <AppSidebar />
-      <SidebarInset>
-        <Breadcrumbs />
-        {children}
-      </SidebarInset>
-    </SidebarProvider>
-  );
+	return (
+		<SidebarProvider>
+			<AppSidebar />
+			<SidebarInset>
+				<Breadcrumbs />
+				{children}
+			</SidebarInset>
+		</SidebarProvider>
+	);
 }
