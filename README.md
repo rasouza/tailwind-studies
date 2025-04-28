@@ -1,87 +1,97 @@
-# Welcome to React Router!
+Generated with [vike.dev/new](https://vike.dev/new) ([version 429](https://www.npmjs.com/package/create-vike/v/0.0.429)) using this command:
 
-A modern, production-ready template for building full-stack React applications using React Router.
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
-
-## Features
-
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
-
-## Getting Started
-
-### Installation
-
-Install the dependencies:
-
-```bash
-npm install
+```sh
+npm create vike@latest --- --react --tailwindcss --shadcn-ui --authjs --trpc --hono --prisma --biome
 ```
 
-### Development
+## Contents
 
-Start the development server with HMR:
+* [*Prisma*](#prisma)
 
-```bash
-npm run dev
+  * [Setup](#setup)
+
+* [React](#react)
+
+  * [`/pages/+config.ts`](#pagesconfigts)
+  * [Routing](#routing)
+  * [`/pages/_error/+Page.jsx`](#pages_errorpagejsx)
+  * [`/pages/+onPageTransitionStart.ts` and `/pages/+onPageTransitionEnd.ts`](#pagesonpagetransitionstartts-and-pagesonpagetransitionendts)
+  * [SSR](#ssr)
+  * [HTML Streaming](#html-streaming)
+
+* [shadcn/ui](#shadcnui)
+
+  * [Configuration](#configuration)
+  * [Add Components to Your Project](#add-components-to-your-project)
+
+## *Prisma*
+
+### Setup
+
+Run the following command once:
+
+```sh
+pnpx prisma init
 ```
 
-Your application will be available at `http://localhost:5173`.
+then follow instructions at <https://www.prisma.io/docs/getting-started/quickstart#2-model-your-data-in-the-prisma-schema>
 
-## Building for Production
+## React
 
-Create a production build:
+This app is ready to start. It's powered by [Vike](https://vike.dev) and [React](https://react.dev/learn).
 
-```bash
-npm run build
-```
+### `/pages/+config.ts`
 
-## Deployment
+Such `+` files are [the interface](https://vike.dev/config) between Vike and your code. It defines:
 
-### Docker Deployment
+* A default [`<Layout>` component](https://vike.dev/Layout) (that wraps your [`<Page>` components](https://vike.dev/Page)).
+* A default [`title`](https://vike.dev/title).
+* Global [`<head>` tags](https://vike.dev/head-tags).
 
-To build and run using Docker:
+### Routing
 
-```bash
-docker build -t my-app .
+[Vike's built-in router](https://vike.dev/routing) lets you choose between:
 
-# Run the container
-docker run -p 3000:3000 my-app
-```
+* [Filesystem Routing](https://vike.dev/filesystem-routing) (the URL of a page is determined based on where its `+Page.jsx` file is located on the filesystem)
+* [Route Strings](https://vike.dev/route-string)
+* [Route Functions](https://vike.dev/route-function)
 
-The containerized application can be deployed to any platform that supports Docker, including:
+### `/pages/_error/+Page.jsx`
 
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
+The [error page](https://vike.dev/error-page) which is rendered when errors occur.
 
-### DIY Deployment
+### `/pages/+onPageTransitionStart.ts` and `/pages/+onPageTransitionEnd.ts`
 
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
+The [`onPageTransitionStart()` hook](https://vike.dev/onPageTransitionStart), together with [`onPageTransitionEnd()`](https://vike.dev/onPageTransitionEnd), enables you to implement page transition animations.
 
-Make sure to deploy the output of `npm run build`
+### SSR
 
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
+SSR is enabled by default. You can [disable it](https://vike.dev/ssr) for all your pages or only for some pages.
 
-## Styling
+### HTML Streaming
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+You can enable/disable [HTML streaming](https://vike.dev/stream) for all your pages, or only for some pages while still using it for others.
 
----
+## shadcn/ui
 
-Built with ❤️ using React Router.
+Beautifully designed components that you can copy and paste into your apps. Accessible. Customizable. Open Source.
+
+### Configuration
+
+see [shadcn/ui theming](https://ui.shadcn.com/docs/theming)
+
+Base Configuration can be found in `components.json` file.
+
+> \[!NOTE]
+> changes to the `components.json` file **will not** be reflected in existing components. Only new components will be affected.
+
+### Add Components to Your Project
+
+**Example:** add a component to your project.
+`pnpm shadcn add button`
+
+use the `<Button />` component in your project:
+`import { Button } from "@/components/ui/button";`
+
+more [shadcn/ui components](https://ui.shadcn.com/docs/components/accordion)
+
