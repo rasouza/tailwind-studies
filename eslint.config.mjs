@@ -23,6 +23,7 @@ export default defineConfig([
       "plugin:@typescript-eslint/recommended",
       "plugin:react/recommended",
       "plugin:prettier/recommended",
+      "@eslint-react/eslint-plugin"
     ),
 
     plugins: {
