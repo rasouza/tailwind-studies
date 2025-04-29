@@ -13,7 +13,7 @@ import { isMatch, useMatches } from "@tanstack/react-router";
 export function Breadcrumbs() {
   const matches = useMatches();
   const matchesWithCrumbs = matches.filter((match) =>
-    isMatch(match, "loaderData.crumb")
+    isMatch(match, "loaderData.crumb"),
   );
 
   const items = matchesWithCrumbs.map(({ pathname, loaderData }) => {

@@ -2,9 +2,9 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from '@radix-ui/react-collapsible'
-import { ChevronRight, type LucideIcon } from 'lucide-react'
-import { group } from 'radash'
+} from "@radix-ui/react-collapsible";
+import { ChevronRight, type LucideIcon } from "lucide-react";
+import { group } from "radash";
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -14,23 +14,23 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-} from '../ui/sidebar'
+} from "../ui/sidebar";
 
 export interface NavigationItem {
-  group: string
-  title: string
-  url: string
-  icon?: LucideIcon
-  isActive?: boolean
-  items?: NavigationSubItem[]
+  group: string;
+  title: string;
+  url: string;
+  icon?: LucideIcon;
+  isActive?: boolean;
+  items?: NavigationSubItem[];
 }
 export interface NavigationSubItem {
-  title: string
-  url: string
+  title: string;
+  url: string;
 }
 
 export function Navigation({ items }: { items: NavigationItem[] }) {
-  const sections = group(items, (item) => item.group)
+  const sections = group(items, (item) => item.group);
 
   return (
     <div>
@@ -49,14 +49,10 @@ export function Navigation({ items }: { items: NavigationItem[] }) {
         </SidebarGroup>
       ))}
     </div>
-  )
+  );
 }
 
-function ItemWithSubmenu({
-  item,
-}: {
-  item: NavigationItem
-}) {
+function ItemWithSubmenu({ item }: { item: NavigationItem }) {
   return (
     <Collapsible
       asChild
@@ -86,14 +82,10 @@ function ItemWithSubmenu({
         </CollapsibleContent>
       </SidebarMenuItem>
     </Collapsible>
-  )
+  );
 }
 
-function ItemWithoutSubmenu({
-  item,
-}: {
-  item: NavigationItem
-}) {
+function ItemWithoutSubmenu({ item }: { item: NavigationItem }) {
   return (
     <SidebarMenuSubItem key={item.title}>
       <SidebarMenuSubButton asChild>
@@ -103,5 +95,5 @@ function ItemWithoutSubmenu({
         </a>
       </SidebarMenuSubButton>
     </SidebarMenuSubItem>
-  )
+  );
 }

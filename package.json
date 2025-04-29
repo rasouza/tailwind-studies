@@ -44,6 +44,8 @@
     "@testing-library/react": "^16.2.0",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
     "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^9.25.1",
     "eslint-config-prettier": "^10.1.2",
@@ -51,7 +53,7 @@
     "eslint-plugin-react": "^7.37.5",
     "jsdom": "^26.0.0",
     "prettier": "3.5.3",
-    "typescript": "^5.7.2",
+    "typescript": "^5.8.3",
     "vite": "^6.1.0",
     "vitest": "^3.0.5",
     "web-vitals": "^4.2.4"

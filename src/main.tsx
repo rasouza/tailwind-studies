@@ -38,7 +38,7 @@ if (rootElement && !rootElement.innerHTML) {
       <TanstackQuery.Provider>
         <RouterProvider router={router} />
       </TanstackQuery.Provider>
-    </StrictMode>
+    </StrictMode>,
   );
 }
 

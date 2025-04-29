@@ -1,47 +1,47 @@
-'use client'
+"use client";
 
-import { AudioWaveform, Command, GalleryVerticalEnd } from 'lucide-react'
-import type * as React from 'react'
+import { AudioWaveform, Command, GalleryVerticalEnd } from "lucide-react";
+import type * as React from "react";
 
-import { NavUser } from '@/components/Sidebar/NavUser'
-import { TeamSwitcher } from '@/components/Sidebar/TeamSwitcher'
+import { NavUser } from "@/components/Sidebar/NavUser";
+import { TeamSwitcher } from "@/components/Sidebar/TeamSwitcher";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from '@/components/ui/sidebar'
-import { Navigation, type NavigationItem } from './Navigation'
+} from "@/components/ui/sidebar";
+import { Navigation, type NavigationItem } from "./Navigation";
 // This is sample data.
 const data = {
   user: {
-    name: 'shadcn',
-    email: 'm@example.com',
-    avatar: '/avatars/shadcn.jpg',
+    name: "shadcn",
+    email: "m@example.com",
+    avatar: "/avatars/shadcn.jpg",
   },
   teams: [
     {
-      name: 'Acme Inc',
+      name: "Acme Inc",
       logo: GalleryVerticalEnd,
-      plan: 'Enterprise',
+      plan: "Enterprise",
     },
     {
-      name: 'Acme Corp.',
+      name: "Acme Corp.",
       logo: AudioWaveform,
-      plan: 'Startup',
+      plan: "Startup",
     },
     {
-      name: 'Evil Corp.',
+      name: "Evil Corp.",
       logo: Command,
-      plan: 'Free',
+      plan: "Free",
     },
   ],
-}
+};
 
 type AppSideBarProps = {
-  routes: NavigationItem[]
-} & React.ComponentProps<typeof Sidebar>
+  routes: NavigationItem[];
+} & React.ComponentProps<typeof Sidebar>;
 
 export function AppSidebar({ routes, ...props }: AppSideBarProps) {
   return (
@@ -57,5 +57,5 @@ export function AppSidebar({ routes, ...props }: AppSideBarProps) {
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }
