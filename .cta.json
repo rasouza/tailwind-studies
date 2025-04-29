@@ -1,0 +1,17 @@
+{
+  "framework": "react",
+  "projectName": "my-app",
+  "typescript": true,
+  "tailwind": true,
+  "packageManager": "npm",
+  "toolchain": "none",
+  "mode": "file-router",
+  "git": true,
+  "variableValues": {},
+  "version": 1,
+  "existingAddOns": [
+    "tanstack-query",
+    "shadcn",
+    "t3env"
+  ]
+}
