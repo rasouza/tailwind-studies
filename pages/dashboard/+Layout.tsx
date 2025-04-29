@@ -1,11 +1,9 @@
 import { Breadcrumbs } from '@/components/Breadcrumbs'
-import '../../assets/style.css'
-
-import '../../assets/tailwind.css'
-
 import { AppSidebar } from '@/components/Sidebar/Sidebar'
-
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar'
+import '../../assets/style.css'
+import '../../assets/tailwind.css'
+import routes from './routes'
 
 export default function LayoutDefault({
   children,
@@ -14,7 +12,7 @@ export default function LayoutDefault({
 }) {
   return (
     <SidebarProvider>
-      <AppSidebar />
+      <AppSidebar routes={routes} />
       <SidebarInset>
         <Breadcrumbs />
         {children}

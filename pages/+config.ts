@@ -13,4 +13,8 @@ export default {
 
   passToClient: ['user'],
   extends: vikeReact,
+
+  redirects: {
+    '/': '/dashboard',
+  },
 } satisfies Config

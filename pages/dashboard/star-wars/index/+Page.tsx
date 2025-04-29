@@ -9,7 +9,7 @@ export default function Page() {
       <ol>
         {movies.map(({ id, title, release_date }) => (
           <li key={id}>
-            <a href={`/star-wars/${id}`}>{title}</a> ({release_date})
+            <a href={`/dashboard/star-wars/${id}`}>{title}</a> ({release_date})
           </li>
         ))}
       </ol>
