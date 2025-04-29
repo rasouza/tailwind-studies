@@ -1,21 +1,32 @@
 import {
   Collapsible,
-  CollapsibleTrigger,
   CollapsibleContent,
+  CollapsibleTrigger,
 } from '@radix-ui/react-collapsible'
 import { ChevronRight, type LucideIcon } from 'lucide-react'
+import { group } from 'radash'
 import {
   SidebarGroup,
   SidebarGroupLabel,
   SidebarMenu,
-  SidebarMenuItem,
   SidebarMenuButton,
+  SidebarMenuItem,
   SidebarMenuSub,
-  SidebarMenuSubItem,
   SidebarMenuSubButton,
+  SidebarMenuSubItem,
 } from '../ui/sidebar'
-import { group } from 'radash'
-import type { NavigationItem } from './routes'
+export interface NavigationItem {
+  group: string
+  title: string
+  url: string
+  icon?: LucideIcon
+  isActive?: boolean
+  items?: NavigationSubItem[]
+}
+export interface NavigationSubItem {
+  title: string
+  url: string
+}
 
 export function Navigation({ items }: { items: NavigationItem[] }) {
   const sections = group(items, (item) => item.group)

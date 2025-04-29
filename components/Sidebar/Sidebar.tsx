@@ -12,8 +12,7 @@ import {
   SidebarHeader,
   SidebarRail,
 } from '@/components/ui/sidebar'
-import routes from './routes'
-import { Navigation } from './Navigation'
+import { Navigation, type NavigationItem } from './Navigation'
 // This is sample data.
 const data = {
   user: {
@@ -40,7 +39,11 @@ const data = {
   ],
 }
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+type AppSideBarProps = {
+  routes: NavigationItem[]
+} & React.ComponentProps<typeof Sidebar>
+
+export function AppSidebar({ routes, ...props }: AppSideBarProps) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
