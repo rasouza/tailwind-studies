@@ -1,0 +1,23 @@
+{
+  "name": "@repo/api-contracts",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "tsup"
+  },
+  "devDependencies": {
+    "@ts-rest/core": "^3.52.1",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.2",
+    "zod": "^3.24.3"
+  },
+
+  "main": "./dist/users.cjs",   
+  "module": "./dist/users.js",
+  "exports": {
+    "require": "./dist/users.cjs",
+    "import": "./dist/users.js"
+  },
+  "types": "./dist/users.d.ts"
+}

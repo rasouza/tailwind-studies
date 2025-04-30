@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "declaration": true,
+    "module": "NodeNext",
+    "target": "ES2017",
+    "moduleResolution": "NodeNext"
+  },
+  "include": ["src"]
+}
