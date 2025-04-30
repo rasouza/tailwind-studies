@@ -35,18 +35,12 @@ export function Breadcrumbs() {
               const isLastItem = index === items.length - 1;
               return !isLastItem ? (
                 <Fragment key={`${item.label}-${index}`}>
-                  <BreadcrumbItem
-                    className="hidden md:block"
-                  >
-                    <BreadcrumbLink
-                      href={item.href}
-                    >
+                  <BreadcrumbItem className="hidden md:block">
+                    <BreadcrumbLink href={item.href}>
                       {item.label}
                     </BreadcrumbLink>
                   </BreadcrumbItem>
-                  <BreadcrumbSeparator
-                    className="hidden md:block"
-                  />
+                  <BreadcrumbSeparator className="hidden md:block" />
                 </Fragment>
               ) : (
                 <BreadcrumbItem key={`${item.label}-${index}`}>

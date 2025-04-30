@@ -10,175 +10,175 @@
 
 // Import Routes
 
-import { Route as rootRoute } from './routes/__root'
-import { Route as DashboardRouteImport } from './routes/dashboard/route'
-import { Route as DashboardIndexImport } from './routes/dashboard/index'
-import { Route as DashboardUsersRouteImport } from './routes/dashboard/users/route'
-import { Route as DashboardUsersListImport } from './routes/dashboard/users/list'
-import { Route as DashboardUsersAddImport } from './routes/dashboard/users/add'
+import { Route as rootRoute } from "./routes/__root";
+import { Route as DashboardRouteImport } from "./routes/dashboard/route";
+import { Route as DashboardIndexImport } from "./routes/dashboard/index";
+import { Route as DashboardUsersRouteImport } from "./routes/dashboard/users/route";
+import { Route as DashboardUsersListImport } from "./routes/dashboard/users/list";
+import { Route as DashboardUsersAddImport } from "./routes/dashboard/users/add";
 
 // Create/Update Routes
 
 const DashboardRouteRoute = DashboardRouteImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
+  id: "/dashboard",
+  path: "/dashboard",
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const DashboardIndexRoute = DashboardIndexImport.update({
-  id: '/',
-  path: '/',
+  id: "/",
+  path: "/",
   getParentRoute: () => DashboardRouteRoute,
-} as any)
+} as any);
 
 const DashboardUsersRouteRoute = DashboardUsersRouteImport.update({
-  id: '/users',
-  path: '/users',
+  id: "/users",
+  path: "/users",
   getParentRoute: () => DashboardRouteRoute,
-} as any)
+} as any);
 
 const DashboardUsersListRoute = DashboardUsersListImport.update({
-  id: '/list',
-  path: '/list',
+  id: "/list",
+  path: "/list",
   getParentRoute: () => DashboardUsersRouteRoute,
-} as any)
+} as any);
 
 const DashboardUsersAddRoute = DashboardUsersAddImport.update({
-  id: '/add',
-  path: '/add',
+  id: "/add",
+  path: "/add",
   getParentRoute: () => DashboardUsersRouteRoute,
-} as any)
+} as any);
 
 // Populate the FileRoutesByPath interface
 
-declare module '@tanstack/react-router' {
+declare module "@tanstack/react-router" {
   interface FileRoutesByPath {
-    '/dashboard': {
-      id: '/dashboard'
-      path: '/dashboard'
-      fullPath: '/dashboard'
-      preLoaderRoute: typeof DashboardRouteImport
-      parentRoute: typeof rootRoute
-    }
-    '/dashboard/users': {
-      id: '/dashboard/users'
-      path: '/users'
-      fullPath: '/dashboard/users'
-      preLoaderRoute: typeof DashboardUsersRouteImport
-      parentRoute: typeof DashboardRouteImport
-    }
-    '/dashboard/': {
-      id: '/dashboard/'
-      path: '/'
-      fullPath: '/dashboard/'
-      preLoaderRoute: typeof DashboardIndexImport
-      parentRoute: typeof DashboardRouteImport
-    }
-    '/dashboard/users/add': {
-      id: '/dashboard/users/add'
-      path: '/add'
-      fullPath: '/dashboard/users/add'
-      preLoaderRoute: typeof DashboardUsersAddImport
-      parentRoute: typeof DashboardUsersRouteImport
-    }
-    '/dashboard/users/list': {
-      id: '/dashboard/users/list'
-      path: '/list'
-      fullPath: '/dashboard/users/list'
-      preLoaderRoute: typeof DashboardUsersListImport
-      parentRoute: typeof DashboardUsersRouteImport
-    }
+    "/dashboard": {
+      id: "/dashboard";
+      path: "/dashboard";
+      fullPath: "/dashboard";
+      preLoaderRoute: typeof DashboardRouteImport;
+      parentRoute: typeof rootRoute;
+    };
+    "/dashboard/users": {
+      id: "/dashboard/users";
+      path: "/users";
+      fullPath: "/dashboard/users";
+      preLoaderRoute: typeof DashboardUsersRouteImport;
+      parentRoute: typeof DashboardRouteImport;
+    };
+    "/dashboard/": {
+      id: "/dashboard/";
+      path: "/";
+      fullPath: "/dashboard/";
+      preLoaderRoute: typeof DashboardIndexImport;
+      parentRoute: typeof DashboardRouteImport;
+    };
+    "/dashboard/users/add": {
+      id: "/dashboard/users/add";
+      path: "/add";
+      fullPath: "/dashboard/users/add";
+      preLoaderRoute: typeof DashboardUsersAddImport;
+      parentRoute: typeof DashboardUsersRouteImport;
+    };
+    "/dashboard/users/list": {
+      id: "/dashboard/users/list";
+      path: "/list";
+      fullPath: "/dashboard/users/list";
+      preLoaderRoute: typeof DashboardUsersListImport;
+      parentRoute: typeof DashboardUsersRouteImport;
+    };
   }
 }
 
 // Create and export the route tree
 
 interface DashboardUsersRouteRouteChildren {
-  DashboardUsersAddRoute: typeof DashboardUsersAddRoute
-  DashboardUsersListRoute: typeof DashboardUsersListRoute
+  DashboardUsersAddRoute: typeof DashboardUsersAddRoute;
+  DashboardUsersListRoute: typeof DashboardUsersListRoute;
 }
 
 const DashboardUsersRouteRouteChildren: DashboardUsersRouteRouteChildren = {
   DashboardUsersAddRoute: DashboardUsersAddRoute,
   DashboardUsersListRoute: DashboardUsersListRoute,
-}
+};
 
 const DashboardUsersRouteRouteWithChildren =
-  DashboardUsersRouteRoute._addFileChildren(DashboardUsersRouteRouteChildren)
+  DashboardUsersRouteRoute._addFileChildren(DashboardUsersRouteRouteChildren);
 
 interface DashboardRouteRouteChildren {
-  DashboardUsersRouteRoute: typeof DashboardUsersRouteRouteWithChildren
-  DashboardIndexRoute: typeof DashboardIndexRoute
+  DashboardUsersRouteRoute: typeof DashboardUsersRouteRouteWithChildren;
+  DashboardIndexRoute: typeof DashboardIndexRoute;
 }
 
 const DashboardRouteRouteChildren: DashboardRouteRouteChildren = {
   DashboardUsersRouteRoute: DashboardUsersRouteRouteWithChildren,
   DashboardIndexRoute: DashboardIndexRoute,
-}
+};
 
 const DashboardRouteRouteWithChildren = DashboardRouteRoute._addFileChildren(
   DashboardRouteRouteChildren,
-)
+);
 
 export interface FileRoutesByFullPath {
-  '/dashboard': typeof DashboardRouteRouteWithChildren
-  '/dashboard/users': typeof DashboardUsersRouteRouteWithChildren
-  '/dashboard/': typeof DashboardIndexRoute
-  '/dashboard/users/add': typeof DashboardUsersAddRoute
-  '/dashboard/users/list': typeof DashboardUsersListRoute
+  "/dashboard": typeof DashboardRouteRouteWithChildren;
+  "/dashboard/users": typeof DashboardUsersRouteRouteWithChildren;
+  "/dashboard/": typeof DashboardIndexRoute;
+  "/dashboard/users/add": typeof DashboardUsersAddRoute;
+  "/dashboard/users/list": typeof DashboardUsersListRoute;
 }
 
 export interface FileRoutesByTo {
-  '/dashboard/users': typeof DashboardUsersRouteRouteWithChildren
-  '/dashboard': typeof DashboardIndexRoute
-  '/dashboard/users/add': typeof DashboardUsersAddRoute
-  '/dashboard/users/list': typeof DashboardUsersListRoute
+  "/dashboard/users": typeof DashboardUsersRouteRouteWithChildren;
+  "/dashboard": typeof DashboardIndexRoute;
+  "/dashboard/users/add": typeof DashboardUsersAddRoute;
+  "/dashboard/users/list": typeof DashboardUsersListRoute;
 }
 
 export interface FileRoutesById {
-  __root__: typeof rootRoute
-  '/dashboard': typeof DashboardRouteRouteWithChildren
-  '/dashboard/users': typeof DashboardUsersRouteRouteWithChildren
-  '/dashboard/': typeof DashboardIndexRoute
-  '/dashboard/users/add': typeof DashboardUsersAddRoute
-  '/dashboard/users/list': typeof DashboardUsersListRoute
+  __root__: typeof rootRoute;
+  "/dashboard": typeof DashboardRouteRouteWithChildren;
+  "/dashboard/users": typeof DashboardUsersRouteRouteWithChildren;
+  "/dashboard/": typeof DashboardIndexRoute;
+  "/dashboard/users/add": typeof DashboardUsersAddRoute;
+  "/dashboard/users/list": typeof DashboardUsersListRoute;
 }
 
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath
+  fileRoutesByFullPath: FileRoutesByFullPath;
   fullPaths:
-    | '/dashboard'
-    | '/dashboard/users'
-    | '/dashboard/'
-    | '/dashboard/users/add'
-    | '/dashboard/users/list'
-  fileRoutesByTo: FileRoutesByTo
+    | "/dashboard"
+    | "/dashboard/users"
+    | "/dashboard/"
+    | "/dashboard/users/add"
+    | "/dashboard/users/list";
+  fileRoutesByTo: FileRoutesByTo;
   to:
-    | '/dashboard/users'
-    | '/dashboard'
-    | '/dashboard/users/add'
-    | '/dashboard/users/list'
+    | "/dashboard/users"
+    | "/dashboard"
+    | "/dashboard/users/add"
+    | "/dashboard/users/list";
   id:
-    | '__root__'
-    | '/dashboard'
-    | '/dashboard/users'
-    | '/dashboard/'
-    | '/dashboard/users/add'
-    | '/dashboard/users/list'
-  fileRoutesById: FileRoutesById
+    | "__root__"
+    | "/dashboard"
+    | "/dashboard/users"
+    | "/dashboard/"
+    | "/dashboard/users/add"
+    | "/dashboard/users/list";
+  fileRoutesById: FileRoutesById;
 }
 
 export interface RootRouteChildren {
-  DashboardRouteRoute: typeof DashboardRouteRouteWithChildren
+  DashboardRouteRoute: typeof DashboardRouteRouteWithChildren;
 }
 
 const rootRouteChildren: RootRouteChildren = {
   DashboardRouteRoute: DashboardRouteRouteWithChildren,
-}
+};
 
 export const routeTree = rootRoute
   ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>()
+  ._addFileTypes<FileRouteTypes>();
 
 /* ROUTE_MANIFEST_START
 {
