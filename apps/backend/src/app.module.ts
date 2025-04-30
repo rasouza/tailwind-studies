@@ -7,6 +7,7 @@ import { DatabaseModule } from './database/database.module';
 import { APP_PIPE, APP_INTERCEPTOR, APP_FILTER } from '@nestjs/core';
 import { ZodValidationPipe, ZodSerializerInterceptor } from 'nestjs-zod';
 import { HttpExceptionFilter } from './filters/http-exception-filter';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { HttpExceptionFilter } from './filters/http-exception-filter';
       envFilePath: ['.env', '.development.env'],
     }),
     DatabaseModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [
