@@ -1,6 +1,7 @@
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createRouter } from "@tanstack/react-router";
+import { tsr } from '@/lib/tsr';
 
 import * as TanstackQuery from "./integrations/tanstack-query/root-provider.tsx";
 
@@ -36,7 +37,9 @@ if (rootElement && !rootElement.innerHTML) {
   root.render(
     <StrictMode>
       <TanstackQuery.Provider>
-        <RouterProvider router={router} />
+        <tsr.ReactQueryProvider>
+          <RouterProvider router={router} />
+        </tsr.ReactQueryProvider>
       </TanstackQuery.Provider>
     </StrictMode>,
   );
