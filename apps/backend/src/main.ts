@@ -31,6 +31,7 @@ function bootstrapLogger() {
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     logger: bootstrapLogger(),
+    cors: true,
   });
   app.use(cookieParser());
   app.setGlobalPrefix(API_PREFIX);
