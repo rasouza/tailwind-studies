@@ -4,7 +4,7 @@ import { tsr } from '@/lib/tsr';
 export const Route = createFileRoute("/dashboard/users/list")({
   component: RouteComponent,
   loader: async () => {
-    const data = await tsr.getUsers.query()
+    const data = await tsr.users.getUsers.query()
     if (data.status !== 200) {
       throw new Error("Failed to fetch users");
     }

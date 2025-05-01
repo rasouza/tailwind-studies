@@ -6,6 +6,10 @@ import {
 } from 'nest-winston';
 import * as winston from 'winston';
 import * as cookieParser from 'cookie-parser';
+import { generateOpenApi } from '@ts-rest/open-api';
+import { SwaggerModule } from '@nestjs/swagger';
+import { INestApplication } from '@nestjs/common';
+import { contracts } from '@repo/api-contracts';
 
 const API_PREFIX = 'api';
 
@@ -28,6 +32,16 @@ function bootstrapLogger() {
   return instance;
 }
 
+function bootstraopOpenApi(app: INestApplication) {
+  const document = generateOpenApi(contracts, {
+    info: {
+      title: 'Backend API',
+      version: '1.0.0',
+    },
+  });
+
+  SwaggerModule.setup('docs', app, document);
+}
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     logger: bootstrapLogger(),
@@ -35,6 +49,9 @@ async function bootstrap() {
   });
   app.use(cookieParser());
   app.setGlobalPrefix(API_PREFIX);
+
+  bootstraopOpenApi(app);
+
   await app.listen(process.env.PORT ?? 3001);
 }
 bootstrap();

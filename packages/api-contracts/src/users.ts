@@ -9,10 +9,10 @@ const UserSchema = z.object({
   createdAt: z.date(),
   updatedAt: z.date(),
   name: z.string(),
-  avatar: z.string().optional(),
+  avatar: z.string().nullable(),
 });
 
-export const userContract = c.router({
+export const usersContract = c.router({
   getUsers: {
     method: 'GET',
     path: '/api/users',

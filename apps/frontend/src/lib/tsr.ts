@@ -1,7 +1,7 @@
 import { initTsrReactQuery } from '@ts-rest/react-query/v5';
-import { userContract } from '@repo/api-contracts';
+import { contracts } from '@repo/api-contracts';
 
-export const tsr = initTsrReactQuery(userContract, {
+export const tsr = initTsrReactQuery(contracts, {
   baseUrl: 'http://localhost:3001',
   baseHeaders: {},
 });

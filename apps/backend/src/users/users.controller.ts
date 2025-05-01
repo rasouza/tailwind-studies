@@ -1,23 +1,20 @@
 import { Controller, Get } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { userContract } from '@repo/api-contracts';
+import { usersContract } from '@repo/api-contracts/users';
 import { tsRestHandler, TsRestHandler } from '@ts-rest/nest';
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Get()
-  @TsRestHandler(userContract.getUsers)
+  @TsRestHandler(usersContract.getUsers)
   findAll() {
-    return tsRestHandler(userContract.getUsers, async () => {
+    return tsRestHandler(usersContract.getUsers, async () => {
       const users = await this.usersService.findAll();
-      const transformedUsers = users.map((user) => ({
-        ...user,
-        avatar: user.avatar ?? undefined,
-      }));
+
       return {
         status: 200,
-        body: transformedUsers,
+        body: users,
       };
     });
   }
