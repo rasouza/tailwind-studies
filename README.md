@@ -1,84 +1,144 @@
-# Turborepo starter
+# Fullstack Hackathon Starter Monorepo
 
-This Turborepo starter is maintained by the Turborepo core team.
+![Dashboard](preview.png)
 
-## Using this example
+This monorepo is designed for rapid fullstack development, featuring a modern tech stack and best practices for scalable, maintainable apps.
 
-Run the following command:
 
-```sh
-npx create-turbo@latest
-```
+## 🚀 Features
 
-## What's inside?
+- **Turborepo**: Fast monorepo build system with local and remote caching.
+- **Backend**: [NestJS](https://nestjs.com/) API with PostgreSQL, Prisma ORM, and Zod validation.
+- **Frontend**: [TanStack Router](https://tanstack.com/router) React app with [TanStack Query](https://tanstack.com/query) for data fetching.
+- **API Contracts**: [ts-rest](https://ts-rest.com/) for end-to-end type-safe API contracts and clients.
+- **UI Library**: Shared component library using [shadcn/ui](https://ui.shadcn.com/) and Tailwind CSS.
+- **TypeScript**: End-to-end type safety across all apps and packages.
+- **ESLint & Prettier**: Consistent code style and linting across the repo.
+- **Docker Compose**: Easy local development with PostgreSQL.
 
-This Turborepo includes the following packages/apps:
+---
 
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
+## 🗂️ Monorepo Structure
 
 ```
-cd my-turborepo
-pnpm build
+apps/
+  backend/    # NestJS API (Node.js, Prisma, PostgreSQL)
+  frontend/   # React app (TanStack Router, TanStack Query)
+packages/
+  api-contracts/   # ts-rest API contracts (shared types)
+  eslint-config/   # Shared ESLint config
+  typescript-config/ # Shared tsconfig
+  ui/              # Shared React UI components
 ```
 
-### Develop
+---
 
-To develop all apps and packages, run the following command:
+## 🛠️ Getting Started
 
-```
-cd my-turborepo
-pnpm dev
-```
+### 1. Clone the repository
 
-### Remote Caching
-
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
+```bash
+git clone https://github.com/rasouza/fullstack-hackathon-starter
+cd fullstack-hackathon-starter
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+### 2. Install dependencies
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
+```bash
+npm install
 ```
 
-## Useful Links
+### 3. Start the database with Docker Compose
 
-Learn more about the power of Turborepo:
+```bash
+docker compose up -d
+```
 
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+This will start a local PostgreSQL instance.
+
+### 4. Setup the database
+
+```bash
+cd apps/backend
+cp .env.example .env
+npm run db:generate      # Generate Prisma client
+npm run db:migrate       # Run migrations
+npm run db:seed          # Seed the database with sample data
+```
+
+### 5. Run the backend (NestJS API)
+
+```bash
+npm run start:dev
+```
+
+The backend will be available at [http://localhost:3001](http://localhost:3001).
+
+A OpenAPI spec is available at [http://localhost:3001/docs](http://localhost:3001/docs)
+
+### 6. Run the frontend (React app)
+
+Open a new terminal:
+
+```bash
+cd apps/frontend
+npm run dev # or npm run start
+```
+
+The frontend will be available at [http://localhost:3000/dashboard](http://localhost:3000/dashboard).
+
+---
+
+## 🧩 Highlights
+
+- **Type-Safe API**: API routes and clients are generated from a single source of truth using ts-rest and Zod.
+- **Modern Routing**: File-based routing and layouts with TanStack Router.
+- **Data Fetching**: Integrated TanStack Query for React Query patterns.
+- **Component Library**: Reusable UI components with shadcn/ui and Tailwind CSS.
+- **Prisma ORM**: Type-safe database access and migrations.
+- **Environment Validation**: Zod-powered env validation for both frontend and backend.
+- **Devtools**: Built-in devtools for TanStack Router and Query.
+
+---
+
+## 🧪 Testing
+
+### Backend
+
+```bash
+cd apps/backend
+npm test
+npm test:e2e
+```
+
+### Frontend
+
+```bash
+cd apps/frontend
+npm test
+```
+
+---
+
+## 📦 Useful Commands
+
+- **Build all apps/packages:**  
+  `turbo build`
+- **Develop all apps/packages:**  
+  `turbo dev`
+- **Lint all code:**  
+  `turbo lint`
+- **Format all code:**  
+  `turbo format`
+
+---
+
+## 📚 Resources
+
+- [Turborepo Docs](https://turborepo.com/docs)
+- [NestJS Docs](https://docs.nestjs.com/)
+- [TanStack Router Docs](https://tanstack.com/router)
+- [TanStack Query Docs](https://tanstack.com/query)
+- [ts-rest Docs](https://ts-rest.com/)
+- [Prisma Docs](https://www.prisma.io/docs/)
+- [shadcn/ui Docs](https://ui.shadcn.com/)
