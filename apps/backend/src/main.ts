@@ -1,15 +1,16 @@
+import { INestApplication } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+import { SwaggerModule } from '@nestjs/swagger';
+import { contracts } from '@repo/api-contracts';
+import { generateOpenApi } from '@ts-rest/open-api';
+import * as cookieParser from 'cookie-parser';
 import {
   utilities as nestWinstonModuleUtilities,
   WinstonModule,
 } from 'nest-winston';
 import * as winston from 'winston';
-import * as cookieParser from 'cookie-parser';
-import { generateOpenApi } from '@ts-rest/open-api';
-import { SwaggerModule } from '@nestjs/swagger';
-import { INestApplication } from '@nestjs/common';
-import { contracts } from '@repo/api-contracts';
+
+import { AppModule } from './app.module';
 
 const API_PREFIX = 'api';
 

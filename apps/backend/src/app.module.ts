@@ -1,11 +1,12 @@
 import { Logger, Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { APP_FILTER, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
+import { ZodSerializerInterceptor, ZodValidationPipe } from 'nestjs-zod';
+
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ConfigModule } from '@nestjs/config';
 import { validate } from './config/validate';
 import { DatabaseModule } from './database/database.module';
-import { APP_PIPE, APP_INTERCEPTOR, APP_FILTER } from '@nestjs/core';
-import { ZodValidationPipe, ZodSerializerInterceptor } from 'nestjs-zod';
 import { HttpExceptionFilter } from './filters/http-exception-filter';
 import { UsersModule } from './users/users.module';
 
