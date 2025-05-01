@@ -13,11 +13,24 @@
     "zod": "^3.24.3"
   },
 
-  "main": "./dist/users.cjs",   
-  "module": "./dist/users.js",
   "exports": {
-    "require": "./dist/users.cjs",
-    "import": "./dist/users.js"
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./users": {
+      "import": "./dist/users.js",
+      "require": "./dist/users.cjs"
+    }
+   
   },
-  "types": "./dist/users.d.ts"
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "": ["dist/index.d.ts"],
+      "users": ["dist/users.d.ts"]
+    }
+  }
 }
