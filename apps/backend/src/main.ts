@@ -21,7 +21,7 @@ function bootstrapLogger() {
         format: winston.format.combine(
           winston.format.timestamp(),
           winston.format.ms(),
-          nestWinstonModuleUtilities.format.nestLike('Streaming Subs', {
+          nestWinstonModuleUtilities.format.nestLike('Backend API', {
             colors: true,
             prettyPrint: true,
           }),
